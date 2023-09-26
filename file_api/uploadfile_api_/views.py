@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from .models import File
 from .serializers import FileSerializer
-from file_api.tasks import process_file
+from .tasks import process_file
 
 class FileView(generics.ListCreateAPIView):
   queryset = File.objects.all()
