@@ -16,3 +16,11 @@ services:
     volumes:
       - ./redis.conf:/usr/local/etc/redis/redis.conf
       - ./logs:/var/logs/redis
+  test:
+    build:
+      context: .
+      dockerfile: Dockerfile.test
+    volumes:
+      - ./media:/var/www/media
+    depends_on:
+      - redis
