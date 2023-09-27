@@ -8,3 +8,11 @@ services:
       - "8000:8000"
     volumes:
       - ./media:/var/www/media
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"
+    command: redis-server /usr/local/etc/redis/redis.conf
+    volumes:
+      - ./redis.conf:/usr/local/etc/redis/redis.conf
+      - ./logs:/var/logs/redis
