@@ -3,10 +3,19 @@ FROM python:3.10
 # Copy files with dependencies
 COPY requirements.txt .
 
+ENV DJANGO_SETTINGS_MODULE=file_api/settings.py
+
 RUN pip3 install --upgrade pip
 
 RUN pip3 install --no-cache-dir -r requirements.txt
 
+# Install coverage package
+RUN pip3 install coverage
+
+RUN coverage erase
+
+RUN pip3 install pytest-cov
+
 COPY . .
 
-CMD ["python", "manage.py", "test"]
+CMD ["pytest", "--cov=uploadfile_api_", "uploadfile_api_/tests.py"]
