@@ -3,7 +3,7 @@ FROM python:3.10
 # Copy files with dependencies
 COPY requirements.txt .
 
-ENV DJANGO_SETTINGS_MODULE=file_api/settings.py
+ENV DJANGO_SETTINGS_MODULE=file_api.settings.py
 
 RUN pip3 install --upgrade pip
 
@@ -18,4 +18,4 @@ RUN pip3 install pytest-cov
 
 COPY . .
 
-CMD ["pytest", "--cov=uploadfile_api_", "uploadfile_api_/tests.py"]
+CMD ["pytest", "--cov=file_api/", "uploadfile_api_/tests.py"]
